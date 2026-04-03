@@ -25,9 +25,7 @@
       min-height: 100vh;
       font-family: Georgia, "Times New Roman", serif;
       color: var(--text);
-      background:
-        linear-gradient(var(--bg-dark), var(--bg-dark)),
-        url("futurama-worker.jpg") center center / cover no-repeat fixed;
+      background: linear-gradient(rgba(7, 18, 31, 0.94), rgba(7, 18, 31, 0.9));
       overflow-x: hidden;
     }
 
@@ -153,7 +151,7 @@
       border: 1px solid var(--line);
       border-radius: 30px;
       text-align: center;
-      background: var(--glass);
+      background: linear-gradient(rgba(250, 252, 255, 0.12), rgba(250, 252, 255, 0.08));
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
@@ -172,46 +170,6 @@
       letter-spacing: 0.3em;
       text-transform: uppercase;
       font-size: 0.92rem;
-    }
-
-    .hero-card .description {
-      width: min(760px, 100%);
-      margin: 1.5rem auto 0;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .button-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 190px;
-      padding: 0.9rem 1.25rem;
-      border-radius: 999px;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.9rem;
-    }
-
-    .button-primary {
-      background: #132435;
-      color: #f8fafc;
-    }
-
-    .button-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      color: #f8fafc;
-      background: rgba(255, 255, 255, 0.06);
     }
 
     @media (max-width: 900px) {
@@ -252,7 +210,7 @@
       <div class="rail-label">Hover to Explore</div>
       <div class="nameplate">
         <h2>James A St. Hill</h2>
-        <span>Professional Portfolio</span>
+        <span>Portfolio</span>
       </div>
       <nav>
         <a class="nav-link active" href="index.html">Dashboard</a>
@@ -264,14 +222,6 @@
       <section class="hero-card" aria-labelledby="welcome-title">
         <div class="eyebrow">Welcome</div>
         <h1 id="welcome-title">Hello and welcome to the world of tomorrow</h1>
-        <p class="description">
-          You are viewing the professional landing page for James A St. Hill, where a bold visual
-          introduction meets a polished presentation of his experience, background, and resume.
-        </p>
-        <div class="actions">
-          <a class="button-link button-primary" href="resume.html">View Resume</a>
-          <a class="button-link button-secondary" href="Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
-        </div>
       </section>
     </main>
   </div>
