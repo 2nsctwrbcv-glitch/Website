@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James A St. Hill | Dashboard</title>
+  <style>
+    :root {
+      --bg-dark: rgba(5, 14, 24, 0.74);
+      --glass: rgba(250, 252, 255, 0.12);
+      --glass-strong: rgba(12, 26, 42, 0.78);
+      --line: rgba(255, 255, 255, 0.16);
+      --text: #f5f7fb;
+      --muted: #d7deea;
+      --accent: #f2c46f;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background: linear-gradient(rgba(7, 18, 31, 0.94), rgba(7, 18, 31, 0.9));
+      overflow-x: hidden;
+    }
+
+    .layout {
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .side-window {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 96px;
+      height: 100vh;
+      padding: 2rem 1.1rem;
+      background: linear-gradient(180deg, rgba(6, 17, 29, 0.92), rgba(8, 23, 38, 0.84));
+      border-right: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: width 220ms ease, background 220ms ease;
+    }
+
+    .side-window:hover,
+    .side-window:focus-within {
+      width: 340px;
+      background: linear-gradient(180deg, rgba(7, 18, 31, 0.97), rgba(12, 29, 47, 0.92));
+    }
+
+    .nameplate {
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .side-window:hover .nameplate,
+    .side-window:focus-within .nameplate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .nameplate h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 0.98;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nameplate span {
+      display: block;
+      margin-top: 0.8rem;
+      color: var(--accent);
+      font-size: 0.92rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .rail-label {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      margin: 0 auto;
+      font-size: 0.9rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transition: opacity 180ms ease;
+    }
+
+    .side-window:hover .rail-label,
+    .side-window:focus-within .rail-label {
+      opacity: 0;
+    }
+
+    nav {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 0.95rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: background 180ms ease, border-color 180ms ease, opacity 180ms ease, transform 180ms ease;
+    }
+
+    .side-window:hover .nav-link,
+    .side-window:focus-within .nav-link {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .nav-link.active {
+      background: rgba(242, 196, 111, 0.15);
+      border-color: rgba(242, 196, 111, 0.45);
+      outline: none;
+    }
+
+    .content {
+      width: 100%;
+      margin-left: 96px;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 3rem;
+    }
+
+    .hero-card {
+      width: min(1080px, calc(100% - 2rem));
+      padding: 3.25rem;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      text-align: center;
+      background: linear-gradient(rgba(250, 252, 255, 0.12), rgba(250, 252, 255, 0.08));
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h1 {
+      margin: 0;
+      font-size: clamp(3rem, 10vw, 6.4rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      text-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-card .eyebrow {
+      margin: 0 0 1.25rem;
+      color: var(--accent);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .side-window,
+      .side-window:hover,
+      .side-window:focus-within {
+        width: 100%;
+        height: auto;
+        position: sticky;
+        padding: 1rem;
+      }
+
+      .rail-label {
+        display: none;
+      }
+
+      .nameplate,
+      .nav-link {
+        opacity: 1;
+        transform: none;
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 1.25rem;
+      }
+
+      .hero-card {
+        width: 100%;
+        padding: 2rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="side-window" aria-label="Site navigation">
+      <div class="rail-label">Hover to Explore</div>
+      <div class="nameplate">
+        <h2>James A St. Hill</h2>
+        <span>Portfolio</span>
+      </div>
+      <nav>
+        <a class="nav-link active" href="index.html">Dashboard</a>
+        <a class="nav-link" href="resume.html">Resume</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section class="hero-card" aria-labelledby="welcome-title">
+        <div class="eyebrow">Welcome</div>
+        <h1 id="welcome-title">Hello and welcome to the world of tomorrow</h1>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
