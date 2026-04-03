@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>James A St. Hill | Dashboard</title>
+  <title>James A St. Hill | Resume</title>
   <style>
     :root {
-      --bg-dark: rgba(5, 14, 24, 0.74);
-      --glass: rgba(250, 252, 255, 0.12);
-      --glass-strong: rgba(12, 26, 42, 0.78);
+      --bg-dark: rgba(7, 18, 31, 0.86);
       --line: rgba(255, 255, 255, 0.16);
       --text: #f5f7fb;
-      --muted: #d7deea;
       --accent: #f2c46f;
       --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     }
@@ -71,7 +68,7 @@
       transform: translateX(0);
     }
 
-    .nameplate h2 {
+    .nameplate h1 {
       margin: 0;
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 0.98;
@@ -141,53 +138,48 @@
     .content {
       width: 100%;
       margin-left: 96px;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 3rem;
+      padding: 4rem 3rem;
     }
 
-    .hero-card {
-      width: min(1080px, calc(100% - 2rem));
-      padding: 3.25rem;
-      border: 1px solid var(--line);
+    .resume-shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 30px;
-      text-align: center;
-      background: var(--glass);
-      backdrop-filter: blur(10px);
+      background: rgba(248, 250, 253, 0.94);
+      color: #16202b;
       box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .hero-card h1 {
+    .resume-header {
+      padding: 2.75rem 2.5rem 1.5rem;
+      background:
+        radial-gradient(circle at top right, rgba(242, 196, 111, 0.3), transparent 28%),
+        linear-gradient(135deg, #f8fafc, #edf2f7);
+      border-bottom: 1px solid rgba(22, 32, 43, 0.08);
+    }
+
+    .resume-header h2 {
       margin: 0;
-      font-size: clamp(3rem, 10vw, 6.4rem);
-      line-height: 0.92;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      text-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
     }
 
-    .hero-card .eyebrow {
-      margin: 0 0 1.25rem;
-      color: var(--accent);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      font-size: 0.92rem;
+    .resume-header p {
+      margin: 0.9rem 0 0;
+      max-width: 700px;
+      color: #435264;
+      font-size: 1.05rem;
+      line-height: 1.7;
     }
 
-    .hero-card .description {
-      width: min(760px, 100%);
-      margin: 1.5rem auto 0;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .actions {
+    .resume-actions {
       display: flex;
-      justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
 
     .button-link {
@@ -209,9 +201,23 @@
     }
 
     .button-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      color: #f8fafc;
-      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(19, 36, 53, 0.18);
+      color: #132435;
+      background: rgba(19, 36, 53, 0.04);
+    }
+
+    .resume-viewer {
+      padding: 1.25rem;
+      background: linear-gradient(180deg, rgba(229, 234, 241, 0.8), rgba(243, 246, 249, 1));
+    }
+
+    .resume-frame {
+      width: 100%;
+      min-height: 78vh;
+      border: 0;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
     }
 
     @media (max-width: 900px) {
@@ -239,8 +245,7 @@
         padding: 1.25rem;
       }
 
-      .hero-card {
-        width: 100%;
+      .resume-header {
         padding: 2rem 1.4rem;
       }
     }
@@ -251,26 +256,35 @@
     <aside class="side-window" aria-label="Site navigation">
       <div class="rail-label">Hover to Explore</div>
       <div class="nameplate">
-        <h2>James A St. Hill</h2>
+        <h1>James A St. Hill</h1>
         <span>Professional Portfolio</span>
       </div>
       <nav>
-        <a class="nav-link active" href="index.html">Dashboard</a>
-        <a class="nav-link" href="resume.html">Resume</a>
+        <a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link active" href="resume.html">Resume</a>
       </nav>
     </aside>
 
     <main class="content">
-      <section class="hero-card" aria-labelledby="welcome-title">
-        <div class="eyebrow">Welcome</div>
-        <h1 id="welcome-title">Hello and welcome to the world of tomorrow</h1>
-        <p class="description">
-          You are viewing the professional landing page for James A St. Hill, where a bold visual
-          introduction meets a polished presentation of his experience, background, and resume.
-        </p>
-        <div class="actions">
-          <a class="button-link button-primary" href="resume.html">View Resume</a>
-          <a class="button-link button-secondary" href="Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+      <section class="resume-shell" aria-labelledby="resume-title">
+        <header class="resume-header">
+          <h2 id="resume-title">Resume</h2>
+          <p>
+            This page presents the professional background and experience of James A St. Hill in a
+            clean, executive-style format for employers, collaborators, and visitors reviewing his
+            qualifications.
+          </p>
+          <div class="resume-actions">
+            <a class="button-link button-primary" href="index.html">Back to Dashboard</a>
+            <a class="button-link button-secondary" href="Resume.pdf" target="_blank" rel="noopener noreferrer">Open Resume PDF</a>
+          </div>
+        </header>
+        <div class="resume-viewer">
+          <iframe
+            class="resume-frame"
+            src="Resume.pdf"
+            title="James A St. Hill Resume PDF">
+          </iframe>
         </div>
       </section>
     </main>
